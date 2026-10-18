@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASE Events | Advanced Software Engineering Club - NMIT</title>
+  <meta name="description" content="Explore and register for upcoming ASE events, technical workshops, and hackathons at NMIT. Demonstration calendar with instant seat registration.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/jpeg" href="/assets/ase.jpg">
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/index.html" class="header-brand">
+        <img src="/assets/ase.jpg" alt="Official ASE Logo">
+        <div class="brand-text">
+          <span class="brand-title">ASE</span>
+          <span class="brand-subtitle">Events Portal</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/index.html" class="nav-link">Home</a></li>
+          <li><a href="/recruitment.html" class="nav-link">Recruitment</a></li>
+          <li><a href="/events.html" class="nav-link active">Events</a></li>
+        </ul>
+      </nav>
+
+      <div id="headerAuth" class="header-auth">
+        <!-- Dynamically injected by app.js -->
+        <a href="/login.html" class="btn btn-secondary btn-sm">Log In</a>
+        <a href="/signup.html" class="btn btn-primary btn-sm">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 3.5rem 1.5rem 5rem 1.5rem;">
+    <div class="container">
+      
+      <!-- Page Header -->
+      <div style="text-align: center; max-width: 720px; margin: 0 auto 3rem auto;">
+        <span class="badge" style="margin-bottom: 0.65rem;">DEMONSTRATION CALENDAR</span>
+        <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem; color: #FFFFFF;">Explore &amp; Register for ASE Events</h1>
+        <p style="color: var(--text-muted); font-size: 1.05rem;">
+          Hands-on workshops, systems masterclasses, and competitive hackathons. Reserve your seat and receive your student event pass.
+        </p>
+      </div>
+
+      <!-- Events Cards Grid -->
+      <div id="eventsContainer" class="events-list">
+        <!-- Loaded dynamically from /api/events -->
+        <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 3rem; font-family: var(--font-mono);">
+          Loading events calendar...
+        </div>
+      </div>
+
+      <!-- Event Registration Form Section -->
+      <div class="form-card">
+        
+        <!-- Authentication Notice Banner -->
+        <div id="eventAuthNotice" style="display: none; padding: 0.85rem 1.25rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 0.9rem; margin-bottom: 1.5rem; justify-content: space-between; align-items: center; gap: 1rem;">
+          <div id="eventAuthText" style="color: var(--text-body);"></div>
+          <a href="/login.html?redirect=/events.html" id="eventAuthBtn" class="btn btn-secondary btn-sm" style="white-space: nowrap;">Log In First</a>
+        </div>
+
+        <div id="eventFormSection" class="card">
+          
+          <div style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+            <h2 style="font-size: 1.35rem; color: #FFFFFF; margin-bottom: 0.25rem;">Event Seat Registration Form</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Select an event from the calendar and submit your 15-digit SAN number to lock in your attendee pass.
+            </p>
+          </div>
+
+          <!-- Alert Notification Box -->
+          <div id="eventAlert" class="alert"></div>
+
+          <form id="eventRegForm" novalidate>
+            
+            <!-- Target Event Dropdown -->
+            <div class="form-group">
+              <label for="eventSelect" class="form-label">Selected Event <span class="req">*</span></label>
+              <select id="eventSelect" name="eventId" class="form-control" required>
+                <option value="" disabled selected>-- Choose an event from the list --</option>
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="eventFullName" class="form-label">Full Name <span class="req">*</span></label>
+              <input 
+                type="text" 
+                id="eventFullName" 
+                name="fullName" 
+                class="form-control" 
+                placeholder="e.g. Priya Nair" 
+                required
+                maxlength="80"
+              >
+            </div>
+
+            <!-- SAN Number: Exactly 15 digits -->
+            <div class="form-group">
+              <label for="eventSanNumber" class="form-label">
+                SAN Number <span class="req">*</span>
+                <small style="color: var(--text-muted); font-weight: normal; margin-left: 0.5rem;">(Must be exactly 15 digits)</small>
+              </label>
+              <input 
+                type="text" 
+                id="eventSanNumber" 
+                name="sanNumber" 
+                class="form-control mono" 
+                placeholder="e.g. 123456789012345" 
+                required
+                maxlength="15"
+                pattern="\d{15}"
+                inputmode="numeric"
+              >
+              <span id="eventSanHelp" class="form-help">Must be exactly 15 digits (numbers only, leading zeroes preserved).</span>
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-group">
+              <label for="eventEmail" class="form-label">Email Address <span class="req">*</span></label>
+              <input 
+                type="email" 
+                id="eventEmail" 
+                name="email" 
+                class="form-control" 
+                placeholder="priya.is24@nmit.ac.in" 
+                required
+                maxlength="100"
+              >
+            </div>
+
+            <button type="submit" id="eventSubmitBtn" class="btn btn-primary btn-lg" style="margin-top: 1rem;">
+              Confirm Event Registration &rarr;
+            </button>
+
+          </form>
+
+        </div>
+
+        <!-- Event Confirmation Card (Shown on successful registration) -->
+        <div id="eventConfirmationCard" class="card confirmation-card">
+          <div class="confirmation-icon">✓</div>
+          <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: #FFFFFF;">Seat Reserved Successfully!</h2>
+          <p style="color: var(--text-muted); max-width: 520px; margin: 0 auto;">
+            Your registration has been verified. Please find your event pass confirmation below.
+          </p>
+
+          <div class="confirmation-table" id="eventConfirmationDetails">
+            <!-- Populated dynamically -->
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+            <a href="/index.html" class="btn btn-secondary">Return to Welcome Page</a>
+            <a href="/recruitment.html" class="btn btn-primary">Apply for Recruitment &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>ASE</strong> &bull; Advanced Software Engineering Club at NMIT.
+      </div>
+      <div class="footer-links">
+        <a href="/index.html">Home</a>
+        <a href="/recruitment.html">Recruitment</a>
+        <a href="/login.html">Student Account</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/events.js"></script>
+</body>
+</html>

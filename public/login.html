@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login | ASE - NMIT</title>
+  <meta name="description" content="Sign in to your ASE student account at NMIT to manage recruitment interview appointments and event passes.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/jpeg" href="/assets/ase.jpg">
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/index.html" class="header-brand">
+        <img src="/assets/ase.jpg" alt="Official ASE Logo">
+        <div class="brand-text">
+          <span class="brand-title">ASE</span>
+          <span class="brand-subtitle">Student Portal</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/index.html" class="nav-link">Home</a></li>
+          <li><a href="/recruitment.html" class="nav-link">Recruitment</a></li>
+          <li><a href="/events.html" class="nav-link">Events</a></li>
+        </ul>
+      </nav>
+
+      <div id="headerAuth" class="header-auth">
+        <a href="/login.html" class="btn btn-secondary btn-sm active">Log In</a>
+        <a href="/signup.html" class="btn btn-primary btn-sm">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 4.5rem 1.5rem 5rem 1.5rem;">
+    <div class="container" style="max-width: 500px;">
+      
+      <div class="card">
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <img 
+            src="/assets/ase.jpg" 
+            alt="ASE Logo" 
+            style="width: 58px; height: 58px; margin: 0 auto 1.25rem auto; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); padding: 4px; filter: invert(1); mix-blend-mode: screen;"
+          >
+          <span class="badge" style="margin-bottom: 0.65rem;">STUDENT LOGIN</span>
+          <h1 style="font-size: 1.85rem; margin-bottom: 0.35rem; color: #FFFFFF;">Sign In to ASE</h1>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Access your recruitment application and confirmed event passes.
+          </p>
+        </div>
+
+        <!-- Alert Notification Box -->
+        <div id="authAlert" class="alert"></div>
+
+        <form id="loginForm" novalidate>
+          
+          <div class="form-group">
+            <label for="loginEmail" class="form-label">Email Address <span class="req">*</span></label>
+            <input 
+              type="email" 
+              id="loginEmail" 
+              name="email" 
+              class="form-control" 
+              placeholder="e.g. rahul.cs24@nmit.ac.in" 
+              required
+              autocomplete="email"
+            >
+          </div>
+
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.45rem;">
+              <label for="loginPassword" class="form-label" style="margin-bottom: 0;">Password <span class="req">*</span></label>
+            </div>
+            <input 
+              type="password" 
+              id="loginPassword" 
+              name="password" 
+              class="form-control" 
+              placeholder="Enter your password" 
+              required
+              autocomplete="current-password"
+            >
+          </div>
+
+          <button type="submit" id="loginSubmitBtn" class="btn btn-primary btn-lg" style="margin-top: 1rem;">
+            Log In &rarr;
+          </button>
+
+          <div style="text-align: center; margin-top: 1.75rem; font-size: 0.925rem; color: var(--text-muted); border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
+            New to ASE? <a href="/signup.html" style="color: #FFFFFF; font-weight: 600; text-decoration: underline;">Create a student account</a>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>ASE</strong> &bull; Advanced Software Engineering Club at NMIT.
+      </div>
+      <div class="footer-links">
+        <a href="/index.html">Home</a>
+        <a href="/signup.html">Create Account</a>
+        <a href="/recruitment.html">Recruitment</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

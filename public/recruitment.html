@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruitment Registration | ASE - NMIT</title>
+  <meta name="description" content="Apply to join ASE at NMIT. Submit your student details across Technical, Creative, and Management domains and lock in your interview slot.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/jpeg" href="/assets/ase.jpg">
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/index.html" class="header-brand">
+        <img src="/assets/ase.jpg" alt="Official ASE Logo">
+        <div class="brand-text">
+          <span class="brand-title">ASE</span>
+          <span class="brand-subtitle">Recruitment Portal</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/index.html" class="nav-link">Home</a></li>
+          <li><a href="/recruitment.html" class="nav-link active">Recruitment</a></li>
+          <li><a href="/events.html" class="nav-link">Events</a></li>
+        </ul>
+      </nav>
+
+      <div id="headerAuth" class="header-auth">
+        <!-- Dynamically injected by app.js -->
+        <a href="/login.html" class="btn btn-secondary btn-sm">Log In</a>
+        <a href="/signup.html" class="btn btn-primary btn-sm">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 3.5rem 1.5rem 5rem 1.5rem;">
+    <div class="container">
+      
+      <!-- Page Header -->
+      <div style="text-align: center; max-width: 720px; margin: 0 auto 2.5rem auto;">
+        <span class="badge" style="margin-bottom: 0.65rem;">ANNUAL MEMBER INTAKE</span>
+        <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem; color: #FFFFFF;">Register for ASE Recruitment</h1>
+        <p style="color: var(--text-muted); font-size: 1.05rem;">
+          Select your domain preferences across Technical, Creative, and Management tracks. Book a dedicated interview slot with our core committee.
+        </p>
+      </div>
+
+      <div class="form-card">
+        
+        <!-- Authentication Status Banner -->
+        <div id="authNoticeBanner" style="display: none; padding: 0.85rem 1.25rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: 0.9rem; margin-bottom: 1.5rem; justify-content: space-between; align-items: center; gap: 1rem;">
+          <div id="authNoticeText" style="color: var(--text-body);"></div>
+          <a href="/login.html?redirect=/recruitment.html" id="authNoticeBtn" class="btn btn-secondary btn-sm" style="white-space: nowrap;">Log In First</a>
+        </div>
+
+        <!-- Alert Notification Box -->
+        <div id="recruitmentAlert" class="alert"></div>
+
+        <!-- Recruitment Form Card -->
+        <div id="formSection" class="card">
+          
+          <form id="recruitmentForm" novalidate>
+            
+            <div style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+              <h2 style="font-size: 1.25rem; color: #FFFFFF; margin-bottom: 0.25rem;">Candidate Information</h2>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">
+                Student credentials and branch verification.
+              </p>
+            </div>
+
+            <!-- SAN Number: Exactly 15 digits -->
+            <div class="form-group">
+              <label for="sanNumber" class="form-label">
+                SAN Number <span class="req">*</span>
+                <small style="color: var(--text-muted); font-weight: normal; margin-left: 0.5rem;">(Must be exactly 15 digits)</small>
+              </label>
+              <input 
+                type="text" 
+                id="sanNumber" 
+                name="sanNumber" 
+                class="form-control mono" 
+                placeholder="e.g. 123456789012345" 
+                required 
+                maxlength="15"
+                pattern="\d{15}"
+                inputmode="numeric"
+              >
+              <span id="sanHelp" class="form-help">Must be exactly 15 digits (numbers only, leading zeroes preserved).</span>
+            </div>
+
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="fullName" class="form-label">Full Name <span class="req">*</span></label>
+              <input 
+                type="text" 
+                id="fullName" 
+                name="fullName" 
+                class="form-control" 
+                placeholder="e.g. Priyanshu Sharma" 
+                required
+                maxlength="80"
+              >
+            </div>
+
+            <!-- Branch & Year of Study (Two column grid) -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+              
+              <div class="form-group">
+                <label for="branch" class="form-label">Branch of Study <span class="req">*</span></label>
+                <select id="branch" name="branch" class="form-control" required>
+                  <option value="" disabled selected>Select your engineering branch</option>
+                  <!-- Populated from server config -->
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="yearOfStudy" class="form-label">Year of Study <span class="req">*</span></label>
+                <select id="yearOfStudy" name="yearOfStudy" class="form-control" required>
+                  <option value="" disabled selected>Select your current year</option>
+                  <option value="1st Year">1st Year</option>
+                  <option value="2nd Year">2nd Year</option>
+                  <option value="3rd Year">3rd Year</option>
+                  <option value="4th Year">4th Year</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address <span class="req">*</span></label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="form-control" 
+                placeholder="priyanshu.cs24@nmit.ac.in" 
+                required
+                maxlength="100"
+              >
+            </div>
+
+            <!-- Domain Preferences Section (Categorized) -->
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; margin-top: 2rem; margin-bottom: 1.5rem;">
+              <div style="margin-bottom: 1.25rem;">
+                <h2 style="font-size: 1.25rem; color: #FFFFFF; margin-bottom: 0.25rem;">Domain Preferences</h2>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">
+                  Select one or more domains across technical, creative, or operations tracks that align with your interests.
+                </p>
+              </div>
+
+              <!-- Category 1: Technical Domains -->
+              <div class="domain-category-block">
+                <div class="domain-category-title">
+                  <span>💻</span> Technical Domains
+                </div>
+                <div class="domain-checkbox-grid" id="techDomainsContainer">
+                  <!-- Checkboxes populated dynamically -->
+                </div>
+              </div>
+
+              <!-- Category 2: Creative & Media Domains -->
+              <div class="domain-category-block">
+                <div class="domain-category-title">
+                  <span>🎨</span> Creative &amp; Media Domains
+                </div>
+                <div class="domain-checkbox-grid" id="creativeDomainsContainer">
+                  <!-- Checkboxes populated dynamically -->
+                </div>
+              </div>
+
+              <!-- Category 3: Management & Operations Domains -->
+              <div class="domain-category-block">
+                <div class="domain-category-title">
+                  <span>📋</span> Management &amp; Operations Domains
+                </div>
+                <div class="domain-checkbox-grid" id="managementDomainsContainer">
+                  <!-- Checkboxes populated dynamically -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Interview Scheduling Section -->
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; margin-top: 2rem;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
+                <div>
+                  <h2 style="font-size: 1.25rem; color: #FFFFFF; margin-bottom: 0.25rem;">Interview Slot Selection</h2>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);">
+                    Select an interview date to view available time slots. Slots are strictly one booking per candidate.
+                  </p>
+                </div>
+                <span class="badge">FIXED SLOTS</span>
+              </div>
+
+              <!-- Interview Date -->
+              <div class="form-group">
+                <label for="interviewDate" class="form-label">Interview Date <span class="req">*</span></label>
+                <select id="interviewDate" name="interviewDate" class="form-control mono" required>
+                  <option value="" disabled selected>-- Select an interview date --</option>
+                  <!-- Populated from server config -->
+                </select>
+              </div>
+
+              <!-- Interview Time Slots Grid -->
+              <div class="form-group">
+                <label class="form-label">
+                  Available Interview Time Slots <span class="req">*</span>
+                  <span id="slotStatusMsg" style="font-size: 0.825rem; font-weight: normal; color: var(--text-muted); margin-left: 0.5rem;">
+                    (Please select a date first)
+                  </span>
+                </label>
+                <div id="slotsContainer" class="slots-container">
+                  <!-- Slots populated dynamically from /api/interview-slots?date=... -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="recruitmentSubmitBtn" class="btn btn-primary btn-lg" style="margin-top: 1.5rem;">
+              Confirm &amp; Book Interview Slot &rarr;
+            </button>
+
+          </form>
+
+        </div>
+
+        <!-- Confirmation Display Card (Shown on successful booking) -->
+        <div id="confirmationCard" class="card confirmation-card">
+          <div class="confirmation-icon">✓</div>
+          <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: #FFFFFF;">Interview Slot Reserved!</h2>
+          <p style="color: var(--text-muted); max-width: 520px; margin: 0 auto;">
+            Your recruitment application and interview appointment have been confirmed.
+          </p>
+
+          <div class="confirmation-table" id="confirmationDetails">
+            <!-- Populated dynamically -->
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+            <a href="/index.html" class="btn btn-secondary">Return to Welcome Page</a>
+            <a href="/events.html" class="btn btn-primary">Explore ASE Events &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>ASE</strong> &bull; Advanced Software Engineering Club at NMIT.
+      </div>
+      <div class="footer-links">
+        <a href="/index.html">Home</a>
+        <a href="/events.html">Events Portal</a>
+        <a href="/login.html">Student Account</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/recruitment.js"></script>
+</body>
+</html>

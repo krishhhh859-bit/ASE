@@ -1,0 +1,27 @@
+{
+  "name": "ase-portal",
+  "version": "1.0.0",
+  "description": "Official Web Portal for ASE - Advanced Software Engineering Club at NMIT",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test_suite.js"
+  },
+  "keywords": [
+    "ase",
+    "nmit",
+    "software-engineering",
+    "recruitment",
+    "events"
+  ],
+  "author": "ASE Team",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "sqlite3": "^5.1.7"
+  }
+}

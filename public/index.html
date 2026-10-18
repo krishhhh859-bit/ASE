@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to ASE | Advanced Software Engineering Club - NMIT</title>
+  <meta name="description" content="Official website and registration portal for ASE - Advanced Software Engineering Club at NMIT. Ideas in mind. Code in motion.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/jpeg" href="/assets/ase.jpg">
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/index.html" class="header-brand">
+        <img src="/assets/ase.jpg" alt="Official ASE Logo">
+        <div class="brand-text">
+          <span class="brand-title">ASE</span>
+          <span class="brand-subtitle">NMIT Technical Club</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/index.html" class="nav-link active">Home</a></li>
+          <li><a href="/recruitment.html" class="nav-link">Recruitment</a></li>
+          <li><a href="/events.html" class="nav-link">Events</a></li>
+        </ul>
+      </nav>
+
+      <!-- Account State Injected Dynamically by app.js -->
+      <div id="headerAuth" class="header-auth">
+        <a href="/login.html" class="btn btn-secondary btn-sm">Log In</a>
+        <a href="/signup.html" class="btn btn-primary btn-sm">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Welcome / Hero Section -->
+    <section class="welcome-hero">
+      
+      <!-- Official ASE Logo with smooth entrance -->
+      <div class="logo-wrapper">
+        <img 
+          src="/assets/ase.jpg" 
+          alt="Official ASE Logo - Advanced Software Engineering Club" 
+          class="ase-official-logo"
+        >
+      </div>
+
+      <!-- Welcome Heading, Club Name & Tagline -->
+      <h1 class="welcome-title">Welcome to <span class="accent">ASE</span></h1>
+      <p class="welcome-tagline">Ideas in mind. Code in motion.</p>
+      <p class="welcome-description">
+        The official student technical organisation for Advanced Software Engineering at NMIT. We build resilient software, conduct rigorous peer reviews, and organize competitive hackathons.
+      </p>
+
+      <!-- Three Prominent Actions (Recruitment, Events, Login/Sign Up) -->
+      <div class="actions-grid">
+        
+        <!-- Action 1: Register for Recruitment -->
+        <a href="/recruitment.html" class="action-card">
+          <div class="action-icon">&lt;/&gt;</div>
+          <h2 class="action-title">Register for Recruitment</h2>
+          <p class="action-desc">
+            Apply to become an active core member of ASE. Select your technical, creative, or management domains, and lock in an interview slot.
+          </p>
+          <span class="btn btn-primary btn-lg">Apply for Recruitment &rarr;</span>
+        </a>
+
+        <!-- Action 2: Register for ASE Events -->
+        <a href="/events.html" class="action-card">
+          <div class="action-icon">⚡</div>
+          <h2 class="action-title">Register for ASE Events</h2>
+          <p class="action-desc">
+            Explore upcoming workshops, technical deep dives, and campus hackathons. Reserve your seat and receive your student event pass.
+          </p>
+          <span class="btn btn-primary btn-lg">Explore &amp; Register &rarr;</span>
+        </a>
+
+        <!-- Action 3: Login / Sign Up -->
+        <div class="action-card" id="landingAuthCard">
+          <div class="action-icon">👤</div>
+          <h2 class="action-title">Student Account Portal</h2>
+          <p class="action-desc">
+            Sign in with your 15-digit SAN number and email to manage your interview appointments, event passes, and prefill registrations.
+          </p>
+          <div style="display: flex; gap: 0.75rem; width: 100%;">
+            <a href="/login.html" class="btn btn-secondary btn-lg" style="flex: 1;">Log In</a>
+            <a href="/signup.html" class="btn btn-primary btn-lg" style="flex: 1;">Sign Up</a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Club Pillars & Values Section -->
+    <section class="pillars-section">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 650px; margin: 0 auto 3.5rem auto;">
+          <span class="badge" style="margin-bottom: 0.75rem;">WHAT WE DO</span>
+          <h2 style="font-size: 2rem; margin-bottom: 0.75rem; color: #FFFFFF;">Engineered for Impact at NMIT</h2>
+          <p style="color: var(--text-muted); font-size: 1.05rem;">
+            ASE bridges the gap between academic theory and practical software engineering standards through student collaboration.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          
+          <div class="card">
+            <div style="font-size: 1.75rem; margin-bottom: 1rem;">💻</div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #FFFFFF;">Peer Code Reviews</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Learn to structure pull requests, write clean maintainable logic, handle concurrency, and receive actionable code feedback from senior mentors.
+            </p>
+          </div>
+
+          <div class="card">
+            <div style="font-size: 1.75rem; margin-bottom: 1rem;">🚀</div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #FFFFFF;">Workshops &amp; Sprints</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Hands-on bootcamps covering modern Git workflows, API development, containerization, and 24-hour campus hackathon code sprints.
+            </p>
+          </div>
+
+          <div class="card">
+            <div style="font-size: 1.75rem; margin-bottom: 1rem;">⚙️</div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #FFFFFF;">Cross-Functional Teams</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Join dedicated domains across technical engineering, media &amp; branding, creative UI/UX, or operations &amp; event management.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>ASE</strong> &bull; Advanced Software Engineering Club at NMIT.
+      </div>
+      <div class="footer-links">
+        <a href="/recruitment.html">Recruitment Portal</a>
+        <a href="/events.html">Events Calendar</a>
+        <a href="/login.html">Log In</a>
+        <a href="/signup.html">Create Account</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
